@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>جامعة العاصمة</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header>
+  <h1>جامعة العاصمة</h1>
+  <nav>
+    <a href="{{ url_for('home') }}">الرئيسية</a>
+    <a href="{{ url_for('login') }}">دخول الطلاب</a>
+    <a href="{{ url_for('admin_login') }}">دخول الإدارة</a>
+  </nav>
+</header>
+<main>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for cat,msg in messages %}
+      <div class="alert {{cat}}">{{msg}}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+{% block content %}{% endblock %}
+</main>
+<footer>© {{ date.today().year }} جامعة العاصمة</footer>
+</body>
+</html>
