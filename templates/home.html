@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>أهلاً بكم في جامعة العاصمة</h2>
+<section>
+  <h3>آخر الأخبار</h3>
+  {% for n in news %}
+    <div>
+      <h4>{{ n.title_ar }}</h4>
+      <p>{{ n.content_ar[:180] }}...</p>
+    </div>
+  {% else %}
+    <p>لا توجد أخبار حالياً.</p>
+  {% endfor %}
+</section>
+{% endblock %}
